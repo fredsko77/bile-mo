@@ -32,14 +32,14 @@ class ClientUser
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Ce champs est obligatoire !")
-     * @Groups({"client:read", "user:read"})
+     * @Groups({"client:read", "user:read", "client:list"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Ce champs est obligatoire !")
-     * @Groups({"client:read", "user:read"})
+     * @Groups({"client:read", "user:read", "client:list"})
      */
     private $lastname;
 
@@ -59,7 +59,7 @@ class ClientUser
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"client:read", "user:read"})
+     * @Groups({"client:read", "user:read", "client:list"})
      */
     private $ref;
 

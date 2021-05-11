@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ClientUser;
 use App\Entity\Product;
 use App\Repository\ClientUserRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -31,14 +32,28 @@ class ClientUserController extends AbstractFOSRestController
      * )
      * @View(serializerGroups={"client:read"})
      */
-    public function show()
+    public function show(ClientUser $client)
     {
-        return $this->view();
+        // if() {
+
+        // }
+        return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
     }
 
     public function create(Request $request)
     {
         return $this->view([], Response::HTTP_OK);
+    }
+
+    /**
+     * @Rest\Get(
+     *  "/api/client_user",
+     *  "api_client_user_list"
+     * )
+     * @View(serializerGroups={"client:list"})
+     */
+    function list() {
+        return $this->view($this->getUser()->getClientUsers());
     }
 
 }
