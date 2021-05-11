@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ClientUser;
 use App\Repository\ClientUserRepository;
+use App\Services\ClientUserServicesInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -24,10 +25,16 @@ class ClientUserController extends AbstractFOSRestController
      */
     private $manager;
 
-    public function __construct(ClientUserRepository $repository, EntityManagerInterface $manager)
+    /**
+     * @var ClientUserServicesInterface $service
+     */
+    private $service;
+
+    public function __construct(ClientUserRepository $repository, EntityManagerInterface $manager, ClientUserServicesInterface $service)
     {
         $this->repository = $repository;
         $this->manager = $manager;
+        $this->service = $service;
     }
 
     /**
@@ -49,13 +56,16 @@ class ClientUserController extends AbstractFOSRestController
     }
 
     /**
-     * @Rest\Post()
+     * @Rest\Post(
+     *  "/api/client_user",
+     *  name="api_client_create"
+     * )
      * @View
      */
     public function create(Request $request)
     {
-        // TO DO create a new User Client
-        return $this->view([], Response::HTTP_OK);
+        $response = $this->service->store($request);
+        return $this->view($response->data, $response->status);
     }
 
     /**

@@ -52,7 +52,6 @@ class ClientUser
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Assert\NotBlank(message="Ce champs est obligatoire !")
      * @Groups({"client:read"})
      */
     private $company;
