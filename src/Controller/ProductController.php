@@ -10,7 +10,7 @@ use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiProductController extends AbstractFOSRestController
+class ProductController extends AbstractFOSRestController
 {
 
     /**

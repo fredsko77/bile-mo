@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ClientUserRepository;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ClientUserRepository::class)
@@ -32,21 +32,21 @@ class ClientUser
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Ce champs est obligatoire !")
-     * @Groups({"client:read"})
+     * @Groups({"client:read", "user:read"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Ce champs est obligatoire !")
-     * @Groups({"client:read"})
+     * @Groups({"client:read", "user:read"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Assert\Email(message="Cette adresse email n'est pas valide !")
-     * @Groups({"client:read"})
+     * @Groups({"client:read", "user:read"})
      */
     private $email;
 
@@ -59,13 +59,13 @@ class ClientUser
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"client:read"})
+     * @Groups({"client:read", "user:read"})
      */
     private $ref;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"client:read"})
+     * @Groups({"client:read", "user:read"})
      */
     private $created_at;
 
