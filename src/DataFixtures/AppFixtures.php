@@ -24,12 +24,7 @@ class AppFixtures extends Fixture
      */
     private $encoder;
 
-    private const ROLES = [
-        ['ROLE_ADMIN'],
-        ['ROLE_ADMIN', 'ROLE_SUPER_ADMIN'],
-        ['ROLE_CLIENT_ADMIN', 'ROLE_CLIENT_USER'],
-        ['ROLE_CLIENT_USER'],
-    ];
+    private const ROLES = ['ROLE_CLIENT_USER'];
 
     private const SPECIFICATIONS = [
         'memory' => [16, 32, 64, 128, 256, 512],
@@ -48,7 +43,7 @@ class AppFixtures extends Fixture
         'Onyx',
         'Next',
         'Shadow',
-        'AndroPhone',
+        'Andro Phone',
         'Z Phone',
         'Smart Phone',
     ];
@@ -91,7 +86,7 @@ class AppFixtures extends Fixture
 
         $faker->company();
 
-        for ($i = 0; $i <= random_int(111, 144); $i++) {
+        for ($i = 0; $i <= random_int(35, 89); $i++) {
             $user = new User;
 
             $role = random_int(0, 2);
@@ -100,7 +95,7 @@ class AppFixtures extends Fixture
                 ->setFirstname($faker->firstName)
                 ->setLastname($faker->lastName)
                 ->setCompany($faker->company)
-                ->setRoles(self::ROLES[$role])
+                ->setRoles(self::ROLES)
                 ->setPassword($this->encoder->encodePassword($user, 'Bile-Mo-00'))
                 ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                 ->setRef($this->generateIdentifier("USR"))
@@ -112,27 +107,23 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
 
-            if ($role === 2) {
+            for ($c = 0; $c < mt_rand(5, 79); $c++) {
+                $client = new ClientUser;
 
-                for ($c = 0; $c < mt_rand(5, 78); $c++) {
-                    $client = new ClientUser;
+                $client->setFirstname($faker->firstName)
+                    ->setLastname($faker->lastName)
+                    ->setEmail($faker->email)
+                    ->setCreatedAt($faker->dateTimeBetween('-6 months'))
+                    ->setCompany($user->getCompany())
+                    ->setUser($user)
+                    ->setRef($this->generateIdentifier("CLT"))
+                ;
 
-                    $client->setFirstname($faker->firstName)
-                        ->setLastname($faker->lastName)
-                        ->setEmail($faker->email)
-                        ->setCreatedAt($faker->dateTimeBetween('-6 months'))
-                        ->setCompany($user->getCompany())
-                        ->setUser($user)
-                        ->setRef($this->generateIdentifier("CLT"))
-                    ;
-
-                    if ($c % random_int(1, 5)) {
-                        $client->setUpdatedAt($faker->dateTimeBetween('-6 months'));
-                    }
-
-                    $manager->persist($client);
+                if ($c % random_int(1, 5)) {
+                    $client->setUpdatedAt($faker->dateTimeBetween('-6 months'));
                 }
 
+                $manager->persist($client);
             }
 
         }
@@ -146,7 +137,7 @@ class AppFixtures extends Fixture
             $manager->persist($spec);
         }
 
-        for ($p = 0; $p <= random_int(628, 678); $p++) {
+        for ($p = 0; $p <= random_int(575, 718); $p++) {
             $product = new Product;
 
             $product->setName(self::MODELS[random_int(0, (count(self::MODELS) - 1))])
