@@ -56,7 +56,7 @@ class ProductRepository extends ServiceEntityRepository
      *
      * @return Product[]
      */
-    public function paginate(int $page = 0, int $items_per_page = 25): array
+    public function paginate(int $page = 0, int $items_per_page = 30): array
     {
         $starter = ($page * $items_per_page);
 
