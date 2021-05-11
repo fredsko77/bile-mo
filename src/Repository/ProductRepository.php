@@ -25,6 +25,9 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.stock > 0');
     }
 
+    /**
+     * @return Product[]
+     */
     public function findAllAvailable(): array
     {
         return $this->findProductWithStock()
@@ -37,7 +40,7 @@ class ProductRepository extends ServiceEntityRepository
      * @param string $fullname
      * @return Product[] Returns an array of Product objects
      */
-    public function search(string $fullname = ''): array
+    public function findByFullname(string $fullname = ''): array
     {
         return $this->findProductWithStock()
             ->andWhere("CONCAT(p.name, ' ', p.brand) LIKE '%{$fullname}%'")
