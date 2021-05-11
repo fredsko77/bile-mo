@@ -50,15 +50,15 @@ class ApiProductController extends AbstractFOSRestController
 
     /**
      * @Rest\Get(
-     *  "/api/product",
+     *  "/api/product/page",
      *  name="api_product_paginate",
      * )
      * @View(serializerGroups={"product:list"})
      */
     public function paginate(Request $request)
     {
-        $page = $request->query->get('page') ?? 0;
-        $items_per_page = $request->query->get('items_per_page') ?? 40;
+        $page = $request->query->get('p') ?? 0;
+        $items_per_page = $request->query->get('i') ?? 25;
 
         return $this->view(
             $this->repository->paginate((int) $page, (int) $items_per_page),
@@ -68,8 +68,8 @@ class ApiProductController extends AbstractFOSRestController
 
     /**
      * @Rest\Get(
-     *  "/api/product",
-     *  name="api_product_paginate",
+     *  "/api/product/search",
+     *  name="api_product_search",
      * )
      * @View(serializerGroups={"product:list"})
      */

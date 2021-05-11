@@ -37,7 +37,7 @@ class ProductRepository extends ServiceEntityRepository
      * @param string $fullname
      * @return Product[] Returns an array of Product objects
      */
-    public function paginate(string $fullname = ''): array
+    public function search(string $fullname = ''): array
     {
         return $this->findProductWithStock()
             ->andWhere("CONCAT(p.name, ' ', p.brand) LIKE '%{$fullname}%'")
@@ -53,7 +53,7 @@ class ProductRepository extends ServiceEntityRepository
      *
      * @return Product[]
      */
-    public function search(int $page = 0, int $items_per_page = 25): array
+    public function paginate(int $page = 0, int $items_per_page = 25): array
     {
         $starter = ($page * $items_per_page);
 
