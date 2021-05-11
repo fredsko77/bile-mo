@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\ClientUser;
-use App\Entity\Product;
 use App\Repository\ClientUserRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -26,17 +25,19 @@ class ClientUserController extends AbstractFOSRestController
 
     /**
      * @Rest\Get(
-     * "/api/client_user/{ref}",
-     *  name="api_product_show",
+     *  "/api/client_user/{ref}",
+     *  name="api_client_user_show",
      *  requirements={"ref"="^([\w]+)_([\w]+)-([\d]+)$"}
      * )
      * @View(serializerGroups={"client:read"})
      */
     public function show(ClientUser $client)
     {
-        // if() {
+        if ($client->getUser()->getId() === $this->getUser()->getId()) {
 
-        // }
+            return $this->view($client);
+        }
+
         return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
     }
 
