@@ -81,6 +81,25 @@ class ClientUserController extends AbstractFOSRestController
     }
 
     /**
+     * @Rest\Put(
+     *  "/api/client_user/{ref}",
+     *  name="api_client_user_update",
+     *  requirements={"ref"="^([\w]+)_([\w]+)-([\d]+)$"}
+     * )
+     * @View
+     */
+    public function update(ClientUser $client, Request $request)
+    {
+        if ($client->getUser()->getId() === $this->getUser()->getId()) {
+
+            $response = $this->service->update($client, $request);
+            return $this->view($response->data, $response->status);
+        }
+
+        return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
+    }
+
+    /**
      * @Rest\Delete(
      *  "/api/client_user/{ref}",
      *  name="api_client_user_delete",

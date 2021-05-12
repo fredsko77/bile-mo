@@ -105,4 +105,34 @@ final class ClientUserServices implements ClientUserServicesInterface
         return $response;
     }
 
+    public function update(ClientUser $client, Request $request): object
+    {
+        $data = (array) json_decode($request->getContent(), true);
+
+        $client->setEmail($data['email'])
+            ->setFirstname($data['firstname'])
+            ->setLastname($data['lastname'])
+        ;
+
+        $response = new stdClass;
+        $response->status = Response::HTTP_BAD_REQUEST;
+
+        $errors = $this->validator->validate($client);
+
+        if (count($errors) > 0) {
+            $response->data = $errors;
+            return $response;
+        }
+
+        $client->setUpdatedAt($this->now());
+
+        $this->manager->persist($client);
+        $this->manager->flush();
+
+        $response->data = 'client_user updated';
+        $response->status = Response::HTTP_CREATED;
+
+        return $response;
+    }
+
 }

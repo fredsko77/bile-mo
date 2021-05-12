@@ -12,7 +12,7 @@ trait HelpersTrait
     }
 
     /**
-     * @return array
+     * @return array $options
      */
     public function getSpecificationOptions(): array
     {
@@ -30,7 +30,12 @@ trait HelpersTrait
         return $options;
     }
 
-    public function pickOptions(?array $options = [])
+    /**
+     * @param array|null $options
+     *
+     * @return array $res
+     */
+    public function pickOptions(?array $options = []): array
     {
         $res = [];
 

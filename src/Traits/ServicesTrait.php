@@ -21,7 +21,7 @@ trait ServicesTrait
     /**
      * @param string $class
      *
-     * @return array
+     * @return array $properties
      */
     public function getProperties(string $class): array
     {
@@ -85,12 +85,19 @@ trait ServicesTrait
      */
     public function generateIdentifier(string $type = "REF"): string
     {
-        return $type .  '_' . $this->generateShuffleChars(5) . '-' . (new DateTime('now'))->format('YmdHisu');
+        return $type . '_' . $this->generateShuffleChars(5) . '-' . (new DateTime('now'))->format('YmdHisu');
     }
 
-    public function _hydrate(array $data = [], string $class)
+    /**
+     * @param array $data
+     * @param mixed $class
+     *
+     * @return object $instance
+     */
+    public function _hydrate(array $data = [], object $class): object
     {
-        $instance = new $class();
+        $instance = gettype($class === 'string') ? new $class() : $class;
+
         foreach ($data as $k => $d) {
             $method = 'set' . $this->getMethod($k);
             method_exists($instance, $method) ? $instance->$method($d) : null;
