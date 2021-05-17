@@ -5,6 +5,8 @@ namespace App\Traits;
 use DateTime;
 use ReflectionClass;
 use ReflectionProperty;
+use stdClass;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 trait ServicesTrait
 {
@@ -104,6 +106,30 @@ trait ServicesTrait
         }
 
         return $instance;
+    }
+
+    /**
+     * @param object $errors
+     * @param stdClass $response
+     *
+     * @return object|null
+     */
+    public function sendErrors(ConstraintViolationList $violations, stdClass $response)
+    {
+
+        if (count($violations) > 0) {
+            $errors = [
+                'title' => 'Validation failed !',
+                'violations' => [],
+            ];
+            foreach ($violations as $violation) {
+                $errors['violations'][$violation->getPropertyPath()] = $violation->getMessage();
+            }
+            $response->data = $errors;
+            return $response;
+        }
+
+        return null;
     }
 
 }

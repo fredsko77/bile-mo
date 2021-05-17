@@ -1,0 +1,293 @@
+<div class="panel anchor" id="api-product" data-panel="product">
+    <div class="api-requests">
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/product</strong>
+                Récupérer la liste des smartphones disponibles 
+            </div>
+            <!-- Liste des véhicules disponibles -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+[
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    }
+]
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/product/page</strong>
+                Récupérer une collection de smartphones paginée
+            </div>
+            <!-- Liste des smartphones paginés -->
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    page  <br> integer <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>Numero de page</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    itemsPerPage<br> integer <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>Nombre de smartphones par page</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+[
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    }
+]
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/product/search</strong>
+                Récupérer une collection de smartphones recherchée
+            </div>
+            <!-- Liste des smartphones recherchés -->
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    q<br> string <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>Requête de la recherche</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+[
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    },
+    {
+        "name": "string",
+        "brand": "string",
+        "price": integer,
+        "ref": "string"
+    }
+]
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/product/{ref}</strong> 
+                Consulter les détails d'un smartphone
+            </div>
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    ref <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>Référence du smartphone</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+{
+    "name": "string",
+    "brand": "string",
+    "description": "string",
+    "price": integer,
+    "weight": integer,
+    "os": "string",
+    "network": [array],
+    "color": [array],
+    "connectivity": [array],
+    "memory": [array],
+    "screen": float,
+    "photo": integer,
+    "ref": "string"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

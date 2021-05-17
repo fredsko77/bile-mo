@@ -1,0 +1,165 @@
+<div class="mb-5 anchor" id="api-requests">
+    <p class="h2 font-weight-bold text-blue mb-4">Les Requêtes</p>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-9">
+            <div class="accordion" data-target="product">
+                Product
+                <i class="icofont-thin-right"></i>
+            </div>
+            {% include "documentation/panels/product.html.twig" %}
+            <div class="accordion" data-target="user">
+                User
+                <i class="icofont-thin-right"></i>
+            </div>
+            <div class="panel anchor" id="api-client" data-panel="user">
+                <div class="api-requests">
+                    <div class="request get">
+                        <div class="request-header">
+                            <span class="type">
+                                GET
+                            </span>
+                            <strong>/api/auth/profile</strong>
+                            Consulter les détails de l'utilisateur authentifié 
+                        </div>
+                        <div class="request-body hide">
+                            <p class="request-title">Response</p>
+                            <div class="request-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">200</th>
+                                            <td>
+                                                <pre class="code">
+{
+    "email": "string",
+    "firstname": "string",
+    "lastname": "string",
+    "company": "string",
+    "ref": "string",
+    "clientUsers": [
+        {
+            "firstname": "string",
+            "lastname": "string",
+            "email": "jstring",
+            "ref": "string"
+        },
+        {
+            "firstname": "string",
+            "lastname": "string",
+            "email": "string",
+            "ref": "string"
+        }
+    ]
+}
+                                                </pre>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" data-target="client_user">
+                ClientUser
+                <i class="icofont-thin-right"></i>
+            </div>
+            {% include "documentation/panels/client_user.html.twig" %}
+            <div class="accordion" data-target="auth">
+                Authentification
+                <i class="icofont-thin-right"></i>
+            </div>
+            <div class="panel anchor" id="api-auth" data-panel="auth">
+                <div class="api-requests">
+                    <div class="request get">
+                        <div class="request-header">
+                            <span class="type">
+                                GET
+                            </span>
+                            <strong>/api/auth/login_check</strong>
+                            Authentification à l'API
+                        </div>
+                        <div class="request-body hide">                        
+                            <p class="request-title">Parameters</p>
+                            <div class="request-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                username <sup class="text-danger">* required</sup> <br> 
+                                                string <br>
+                                                <em>(query)</em>
+                                            </th>
+                                            <td>
+                                                <input class="form-control" type="email" value="m-dupont@societe.fr" disabled>
+                                                Adresse mail de l'utilisateur
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                password <sup class="text-danger">* required</sup> <br> 
+                                                string <br>
+                                                <em>(query)</em>
+                                            </th>
+                                            <td>
+                                                <input class="form-control" type="password" value="Password" disabled>
+                                                Mot de passe de l'utilisateur
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="request-title">Response</p>
+                            <div class="request-content">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">200</th>
+                                            <td>
+                                                <pre class="code">
+{
+    "token": "string"
+}
+                                                </pre>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">401</th>
+                                            <td>
+                                                <pre class="code">
+{
+    "code": 401,
+    "message": "Invalid credentials."
+}
+                                                </pre>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

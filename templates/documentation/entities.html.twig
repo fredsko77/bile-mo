@@ -1,0 +1,140 @@
+<div class="mb-5 anchor" id="api-entities">
+    <p class="h2 font-weight-bold text-blue mb-4">Les Entités</p>
+    <div class="anchor" id="api-entities-product">
+        <p class="h3 font-weight-bold text-blue separator">Product</p>
+        <div class="separator">
+            <small>Un Product représente un smartphone. Détails sur les smartphones.</small>
+        </div>
+        <div class="mb-4">
+            <p><strong>Les propriétés de Product</strong></p>
+            <ul>
+                <li>
+                    <strong>ref</strong> 
+                    <code>(String)</code>: Identifiant unique 
+                </li>
+                <li>
+                    <strong>name</strong> 
+                    <code>(String)</code>: Nom 
+                </li>
+                <li>
+                    <strong>brand</strong> 
+                    <code>(String)</code>: Marque 
+                </li>
+                <li>
+                    <strong>description</strong> 
+                    <code>(String)</code>: Marque 
+                </li>
+                <li>
+                    <strong>price</strong> 
+                    <code>(Float)</code>: Prix 
+                </li>
+                <li>
+                    <strong>weight</strong> 
+                    <code>(Integer)</code>: Poids 
+                </li>
+                <li>
+                    <strong>os</strong> 
+                    <code>(String)</code>: Système d'exploitation 
+                </li>
+                <li>
+                    <strong>network</strong> 
+                    <code>(Array)</code>: Connectivité réseaux 
+                </li>
+                <li>
+                    <strong>color</strong> 
+                    <code>(Array)</code>:Coloris disponibles 
+                </li>
+                <li>
+                    <strong>connectivity</strong> 
+                    <code>(Array)</code>: Connectiques 
+                </li>
+                <li>
+                    <strong>memory</strong> 
+                    <code>(Array)</code>: Storage disponibles 
+                </li>
+                <li>
+                    <strong>screen</strong> 
+                    <code>(Float)</code>: Taille d'écran 
+                </li>
+                <li>
+                    <strong>photo</strong> 
+                    <code>(Integer)</code>: Qualité photo 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="anchor" id="api-entities-client">
+        <p class="h3 font-weight-bold text-blue separator">User</p>
+        <div class="separator">
+            <small>Un User représente un cient. Détails sur les clients.</small>
+        </div>
+        <div class="mb-4">
+            <p><strong>Les propriétés de User</strong></p>
+            <ul>
+                <li>
+                    <strong>ref</strong> 
+                    <code>(String)</code>: Identifiant unique 
+                </li>
+                <li>
+                    <strong>firstname</strong> 
+                    <code>(String)</code>: Prénom 
+                </li>
+                <li>
+                    <strong>lastname</strong> 
+                    <code>(String)</code>: Nom 
+                </li>
+                <li>
+                    <strong>email</strong> 
+                    <code>(String)</code>: Adresse email 
+                </li>
+                <li>
+                    <strong>company</strong> 
+                    <code>(String)</code>: Société 
+                </li>
+                <li>
+                    <strong>created_at</strong> 
+                    <code>(Datetime)</code>: Date de création du client 
+                </li>
+                <li>
+                    <strong>clientUsers</strong> 
+                    <code>(Array)</code>: Collection d'utilisateur lié au client 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="anchor" id="api-entities-user">
+        <p class="h3 font-weight-bold text-blue separator">ClientUser</p>
+        <div class="separator">
+            <small>Un ClientUser représente un utilisateur. Détails sur les utilisateurs.</small>
+        </div>
+        <div class="mb-4">
+            <p><strong>Les propriétés de ClientUser</strong></p>
+            <ul>
+                <li>
+                    <strong>ref</strong> 
+                    <code>(String)</code>: Identifiant unique 
+                </li>
+                <li>
+                    <strong>firstname</strong> 
+                    <code>(String)</code>: Prénom 
+                </li>
+                <li>
+                    <strong>lastname</strong> 
+                    <code>(String)</code>: Nom 
+                </li>
+                <li>
+                    <strong>email</strong> 
+                    <code>(String)</code>: Adresse email 
+                </li>
+                <li>
+                    <strong>company</strong> 
+                    <code>(String)</code>: Société 
+                </li>
+                <li>
+                    <strong>created_at</strong> 
+                    <code>(Datetime)</code>: Date de création du client 
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

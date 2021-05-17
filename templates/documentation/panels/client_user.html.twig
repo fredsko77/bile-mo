@@ -1,0 +1,398 @@
+
+<div class="panel anchor" id="api-user" data-panel="client_user">
+    <div class="api-requests">
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/client_user</strong>
+                Récupérer une collection d'utilisateur
+            </div>
+            <div class="request-body hide">
+                 <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+[
+    {
+        "firstname": "string",
+        "lastname": "string",
+        "ref": "string"
+    },
+    {
+        "firstname": "string",
+        "lastname": "string",
+        "ref": "string"
+    }
+]
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request get">
+            <div class="request-header">
+                <span class="type">
+                    GET
+                </span>
+                <strong>/api/client_user/{ref}</strong>
+                Consulter les détails d'un utilisateur
+            </div>
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    ref <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>Référence de l'utilisateur</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+{
+    "firstname": "string",
+    "lastname": "string",
+    "email": "string",
+    "company": "string",
+    "ref": "string"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Unauthorized"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request post">
+            <div class="request-header">
+                <span class="type">
+                    POST
+                </span>
+                <strong>/api/client_user</strong>
+                Créer un nouvel utilisateur
+            </div>
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    lastname <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="text" value="Dupont" disabled>
+                                    Nom de l'utilisateur
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    firstname <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="text" value="Martin" disabled>
+                                    Prénom de l'utilisateur
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    email <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="email" value="m-dupont@societe.fr" disabled>
+                                    Adresse mail de l'utilisateur
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Client User Updated"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">400</th>
+                                <td>
+                                    <pre class="code">
+{
+    "title": "Validation failed !",
+    "violations": {
+        "field": "Error message",
+        "field": "Error message"
+    }
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Unauthorized"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request put">
+            <div class="request-header">
+                <span class="type">
+                    PUT
+                </span>
+                <strong>/api/client_user/{ref}</strong>
+                Modification d'un utilisateur
+            </div>
+            <div class="request-body hide">                
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    ref <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>Référence de l'utilisateur</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    lastname <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="text" value="Dupont" disabled>
+                                    Nom de l'utilisateur
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    firstname <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="text" value="Martin" disabled>
+                                    Prénom de l'utilisateur
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    email <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(query)</em>
+                                </th>
+                                <td>
+                                    <input class="form-control" type="email" value="m-dupont@societe.fr" disabled>
+                                    Adresse mail de l'utilisateur
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Client User Updated"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">400</th>
+                                <td>
+                                    <pre class="code">
+{
+    "title": "Validation failed !",
+    "violations": {
+        "field": "Error message",
+        "field": "Error message"
+    }
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Unauthorized"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    DELETE
+                </span>
+                <strong>/api/client_user/{ref}</strong>
+                Suppression d'un utilisateur
+            </div>
+            <div class="request-body hide">
+                <p class="request-title">Parameters</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    ref <sup class="text-danger">* required</sup> <br> 
+                                    string <br>
+                                    <em>(path)</em>
+                                </th>
+                                <td>Référence de l'utilisateur</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">200</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Client User Deleted"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "Unauthorized"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

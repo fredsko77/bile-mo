@@ -52,18 +52,18 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * @param int $page
-     * @param int $items_per_page
+     * @param int $itemsPerPage
      *
      * @return Product[]
      */
-    public function paginate(int $page = 0, int $items_per_page = 30): array
+    public function paginate(int $page = 0, int $itemsPerPage = 30): array
     {
-        $starter = ($page * $items_per_page);
+        $starter = ($page * $itemsPerPage);
 
         return $this->findProductWithStock()
             ->orderBy('p.created_at', 'ASC')
             ->setFirstResult($starter)
-            ->setMaxResults($items_per_page)
+            ->setMaxResults($itemsPerPage)
             ->getQuery()
             ->getResult()
         ;

@@ -57,11 +57,11 @@ class ProductController extends AbstractFOSRestController
      */
     public function paginate(Request $request)
     {
-        $page = $request->query->get('p') ?? 0;
-        $items_per_page = $request->query->get('i') ?? 25;
+        $page = $request->query->get('page') ?? 0;
+        $itemsPerPage = $request->query->get('itemsPerPage') ?? 25;
 
         return $this->view(
-            $this->repository->paginate((int) $page, (int) $items_per_page),
+            $this->repository->paginate((int) $page, (int) $itemsPerPage),
             Response::HTTP_OK
         );
     }

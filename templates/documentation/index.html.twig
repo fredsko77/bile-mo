@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <!-- Documentation title -->
+    <h1 class="mt-3 mb-5 font-weight-bolder separator">Documentation de l'API BileMo</h1>
+    
+    <!-- Documentation introduction -->
+    <div class="mb-5 anchor" id="api-intro">
+        <p class="h4 font-weight-bold text-blue">Introduction</p>
+        <small class="mb-4">Bienvenue sur la documentation technique de l'<strong>API BileMo</strong> destiné aux développeur. Cette page présente les caractéristiques techniques de l'API.</small>
+    </div>
+
+    <!-- Documentation http methods -->
+    {% include "documentation/methods.html.twig" %}
+
+    <!-- Documentation http codes -->
+    {% include "documentation/codes.html.twig" %}
+
+    <!-- Documentation Entités -->
+    {% include "documentation/entities.html.twig" %}
+
+    <!-- Documentation Requêtes -->
+    {% include "documentation/requests.html.twig" %}
+{#  #}
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}

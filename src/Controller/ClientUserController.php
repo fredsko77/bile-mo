@@ -114,7 +114,7 @@ class ClientUserController extends AbstractFOSRestController
             $this->manager->remove($client);
             $this->manager->flush();
 
-            return $this->view('Content Deleted', Response::HTTP_OK);
+            return $this->view('Client User Deleted', Response::HTTP_OK);
         }
 
         return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);

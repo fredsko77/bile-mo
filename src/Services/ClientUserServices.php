@@ -80,9 +80,8 @@ final class ClientUserServices implements ClientUserServicesInterface
 
         $errors = $this->validator->validate($client);
 
-        if (count($errors) > 0) {
-            $response->data = $errors;
-            return $response;
+        if ($this->sendErrors($errors, $response)) {
+            return $this->sendErrors($errors, $response);
         }
 
         $client->setCreatedAt($this->now())
@@ -95,7 +94,7 @@ final class ClientUserServices implements ClientUserServicesInterface
         $this->manager->flush();
 
         $response->data = [
-            'data' => 'client_user created',
+            'data' => 'Client User Created',
             'link' => $this->router->generate('api_client_user_show', [
                 'ref' => $client->getRef(),
             ]),
@@ -119,9 +118,8 @@ final class ClientUserServices implements ClientUserServicesInterface
 
         $errors = $this->validator->validate($client);
 
-        if (count($errors) > 0) {
-            $response->data = $errors;
-            return $response;
+        if ($this->sendErrors($errors, $response)) {
+            return $this->sendErrors($errors, $response);
         }
 
         $client->setUpdatedAt($this->now());
@@ -129,8 +127,8 @@ final class ClientUserServices implements ClientUserServicesInterface
         $this->manager->persist($client);
         $this->manager->flush();
 
-        $response->data = 'client_user updated';
-        $response->status = Response::HTTP_CREATED;
+        $response->data = 'Client User Updated';
+        $response->status = Response::HTTP_OK;
 
         return $response;
     }
