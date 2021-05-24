@@ -9,6 +9,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class ProductController extends AbstractFOSRestController
 {
@@ -43,9 +44,13 @@ class ProductController extends AbstractFOSRestController
      * )
      * @View(serializerGroups={"product:list"})
      */
-    public function all()
+    public function all(CacheInterface $cache)
     {
-        return $this->view($this->repository->findAllAvailable(), Response::HTTP_OK);
+        $products = $cache->get('all-available-products', function () {
+            return $this->repository->findAllAvailable();
+        });
+
+        return $this->view($products, Response::HTTP_OK);
     }
 
     /**
