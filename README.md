@@ -50,11 +50,13 @@ Créer un répertoire jwt dans le dossier config **`mkdir -p cnfig/jwt`**
 Générer une clé privée et une clé publique avec openssl  
 ```
 openssl genrsa -out config/jwt/private.pem -aes256 4096
-```
-Définir un mot de passe pour décrypter la clé privée puis générer une clé pulique.   
+```  
+
+Récupérer la pass phrase dans le fichier .env pour décrypter la clé privée puis générer une clé pulique.   
+**`JWT_PASSPHRASE=sf4jwt_bile_mo_00`**  
 ```
 openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 ```
 ```
-chmod -R 775 config/
+chmod -R 775 config/ 
 ```
