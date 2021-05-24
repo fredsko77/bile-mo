@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ClientUser
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -72,6 +73,14 @@ class ClientUser
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @var string $link
+     * @Groups({"client:list"})
+     */
+    private $link;
+
+    const ROUTE_SELF = '/api/client_user';
 
     public function getId(): ?int
     {
@@ -172,5 +181,10 @@ class ClientUser
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function getLink(): string
+    {
+        return self::ROUTE_SELF . '/' . $this->ref;
     }
 }

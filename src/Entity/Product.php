@@ -111,6 +111,14 @@ class Product
      */
     private $updated_at;
 
+    /**
+     * @var string $link
+     * @Groups({"product:list"})
+     */
+    private $link;
+
+    const ROUTE_SELF = '/api/product';
+
     public function getId(): ?int
     {
         return $this->id;
@@ -306,5 +314,10 @@ class Product
         $this->updated_at = $updated_at;
 
         return $this;
+    }
+
+    public function getLink(): string
+    {
+        return self::ROUTE_SELF . '/' . $this->ref;
     }
 }

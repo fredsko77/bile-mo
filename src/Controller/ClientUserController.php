@@ -11,6 +11,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ClientUserController extends AbstractFOSRestController
 {
@@ -30,11 +31,12 @@ class ClientUserController extends AbstractFOSRestController
      */
     private $service;
 
-    public function __construct(ClientUserRepository $repository, EntityManagerInterface $manager, ClientUserServicesInterface $service)
+    public function __construct(ClientUserRepository $repository, EntityManagerInterface $manager, ClientUserServicesInterface $service, UrlGeneratorInterface $router)
     {
         $this->repository = $repository;
         $this->manager = $manager;
         $this->service = $service;
+        $this->router = $router;
     }
 
     /**
@@ -47,12 +49,9 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function show(ClientUser $client)
     {
-        if ($client->getUser()->getId() === $this->getUser()->getId()) {
+        $this->denyAccessUnlessGranted('client_user_action', $client);
 
-            return $this->view($client);
-        }
-
-        return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
+        return $this->view($client);
     }
 
     /**
@@ -90,13 +89,11 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function update(ClientUser $client, Request $request)
     {
-        if ($client->getUser()->getId() === $this->getUser()->getId()) {
+        $this->denyAccessUnlessGranted('client_user_action', $client);
 
-            $response = $this->service->update($client, $request);
-            return $this->view($response->data, $response->status);
-        }
+        $response = $this->service->update($client, $request);
+        return $this->view($response->data, $response->status);
 
-        return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
     }
 
     /**
@@ -109,15 +106,12 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function delete(ClientUser $client)
     {
-        if ($client->getUser()->getId() === $this->getUser()->getId()) {
+        $this->denyAccessUnlessGranted('client_user_action', $client);
 
-            $this->manager->remove($client);
-            $this->manager->flush();
+        $this->manager->remove($client);
+        $this->manager->flush();
 
-            return $this->view('Client User Deleted', Response::HTTP_OK);
-        }
-
-        return $this->view('Unauthorized', Response::HTTP_UNAUTHORIZED);
+        return $this->view('Client User Deleted', Response::HTTP_OK);
     }
 
 }
