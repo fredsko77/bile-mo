@@ -49,7 +49,7 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function show(ClientUser $client)
     {
-        $this->denyAccessUnlessGranted('client_user_action', $client);
+        $this->denyAccessUnlessGranted('client_user_show', $client);
 
         return $this->view($client);
     }
@@ -63,6 +63,9 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function create(Request $request)
     {
+        //  Accès gérer par défaut avec lexik-jwt-bundle 
+        $this->denyAccessUnlessGranted('client_user_create');
+
         $response = $this->service->store($request);
         return $this->view($response->data, $response->status);
     }
@@ -89,7 +92,7 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function update(ClientUser $client, Request $request)
     {
-        $this->denyAccessUnlessGranted('client_user_action', $client);
+        $this->denyAccessUnlessGranted('client_user_update', $client);
 
         $response = $this->service->update($client, $request);
         return $this->view($response->data, $response->status);
@@ -106,7 +109,7 @@ class ClientUserController extends AbstractFOSRestController
      */
     public function delete(ClientUser $client)
     {
-        $this->denyAccessUnlessGranted('client_user_action', $client);
+        $this->denyAccessUnlessGranted('client_user_delete', $client);
 
         $this->manager->remove($client);
         $this->manager->flush();
