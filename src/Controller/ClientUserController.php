@@ -59,12 +59,12 @@ class ClientUserController extends AbstractFOSRestController
      *  "/api/client_user",
      *  name="api_client_create"
      * )
-     * @View
+     * @View(serializerGroups={"client:read"})
      */
     public function create(Request $request)
     {
-        //  Accès gérer par défaut avec lexik-jwt-bundle 
-        $this->denyAccessUnlessGranted('client_user_create');
+        //  Accès gérer par défaut avec lexik-jwt-bundle
+        $this->denyAccessUnlessGranted('client_user_create', (new ClientUser()));
 
         $response = $this->service->store($request);
         return $this->view($response->data, $response->status);
@@ -88,7 +88,7 @@ class ClientUserController extends AbstractFOSRestController
      *  name="api_client_user_update",
      *  requirements={"ref"="^([\w]+)_([\w]+)-([\d]+)$"}
      * )
-     * @View
+     * @View(serializerGroups={"client:read"})
      */
     public function update(ClientUser $client, Request $request)
     {
@@ -114,7 +114,7 @@ class ClientUserController extends AbstractFOSRestController
         $this->manager->remove($client);
         $this->manager->flush();
 
-        return $this->view('Client User Deleted', Response::HTTP_OK);
+        return $this->view([], Response::HTTP_NO_CONTENT);
     }
 
 }

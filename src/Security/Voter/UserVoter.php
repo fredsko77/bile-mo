@@ -33,23 +33,35 @@ class UserVoter extends Voter
         $user = $token->getUser();
 
         // On verifie qu'il y a bien un user connecté et on vérfie que le client_user est lié à un user
-        if (!$user instanceof UserInterface || $client_user->getUser() === null) {
+        if (!$user instanceof UserInterface) {
             return false;
         }
 
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case self::CLIENT_USER_SHOW:
+                if ($client_user->getUser() === null) {
+                    return false;
+                }
+
                 return $this->canShow($client_user, $user);
                 break;
             case self::CLIENT_USER_UPDATE:
+                if ($client_user->getUser() === null) {
+                    return false;
+                }
+
                 return $this->canUpdate($client_user, $user);
                 break;
             case self::CLIENT_USER_DELETE:
+                if ($client_user->getUser() === null) {
+                    return false;
+                }
+
                 return $this->canDelete($client_user, $user);
                 break;
             case self::CLIENT_USER_CREATE:
-                return $this->canCreate($client_user, $user);
+                return $this->canCreate();
                 break;
 
         }
@@ -63,7 +75,7 @@ class UserVoter extends Voter
         return $user === $client_user->getUser();
     }
 
-    private function canCreate(ClientUser $client_user, User $user)
+    private function canCreate()
     {
         // Le user peut créer un nouveau client_user
         return true;

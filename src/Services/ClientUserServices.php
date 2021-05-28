@@ -94,7 +94,7 @@ final class ClientUserServices implements ClientUserServicesInterface
         $this->manager->flush();
 
         $response->data = [
-            'data' => 'Client User Created',
+            'data' => $client,
             'link' => $this->router->generate('api_client_user_show', [
                 'ref' => $client->getRef(),
             ]),
@@ -127,7 +127,7 @@ final class ClientUserServices implements ClientUserServicesInterface
         $this->manager->persist($client);
         $this->manager->flush();
 
-        $response->data = 'Client User Updated';
+        $response->data = $client;
         $response->status = Response::HTTP_OK;
 
         return $response;

@@ -12,38 +12,33 @@ git clone https://github.com/fredsko77/bile-mo.git <répertoire>
 composer install
 ``` 
 
-3. Générer un fichier autoload 
+3. Configurer votre accès à la base de données en mofiant la ligue ci-dessous dans le fichier .env
 ```
-composer dump-autoload
-```
-
-4. Modifier le fichier de configuration .env
-```
-DATABASE_URL="mysql://db_user:db_pass@db_host/db_name?serverVersion=mariadb-10.4.11"
+DATABASE_URL=
 ```
 
-5. Créer la base de données 
+4. Créer la base de données 
 ``` 
 php bin/console doctrine:database:create
 ```
 
-6. Générer les fichiers de migrations 
+5. Générer les fichiers de migrations 
 ```
 php bin/console make:migration
 ``` 
-En cas d'erreur, executer la commande **`mkdir migrations`** puis relancer la commande **`php bin/console make:migration`**
+En cas d'erreur, executer la commande **`mkdir migrations`** (ou créer un repertoire **migrations** à la racine du projet) puis relancer la commande **`php bin/console make:migration`**
 
-7. Executer les fichiers de migrations 
+6. Executer les fichiers de migrations 
 ``` 
 php bin/console doctrine:migrations:migrate
 ```
 
-8. Executer les fixtures (jeu de données initiales)
+7. Executer les fixtures (jeu de données initiales)
 ``` 
 php bin/console doctrine:fixtures:load
 ```
 
-9. Compléter la configuration de lexik-jwt  
+8. Avant de compléter configuration de lexik-jwt, assurez vous que l'extension **openssl** soit bien installé sur votre poste en ouvrant une invite de commande et en tapant **openssl**
   
 Créer un répertoire jwt dans le dossier config **`mkdir -p cnfig/jwt`**
   

@@ -17,6 +17,14 @@
     <!-- Documentation http codes -->
     {% include "documentation/codes.html.twig" %}
 
+    <div class="mb-5 anchor" id="api-http-codes">
+        <p class="h2 font-weight-bold text-blue">Accéder à l'API</p>
+        <p>
+            &#192; chaque requête envoyer à l'API, un jeton vous sera demandé pour vous authentifier. Pour récupérer son  jeton, il faut envoyer une requête sur l'URL <strong>/api/auth/login_check</strong>, <a href="#api-auth">cliquer ici pour consulter la section Authentification</a>. Une fois que le token, vous devez ajouter une entête <strong style="text-decoration: underline">Authorization</strong> ayant pour valeur <strong style="text-decoration: underline">Bearer jeton</strong>. <br/> 
+            <span class="text-danger font-weight-bolder">Important, n'oubliez de mettre un espace entre le mot Bearer et votre jeton</span>  
+        </p>
+    </div>
+
     <!-- Documentation Entités -->
     {% include "documentation/entities.html.twig" %}
 

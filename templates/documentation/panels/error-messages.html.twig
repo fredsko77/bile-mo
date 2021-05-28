@@ -1,0 +1,252 @@
+<div class="panel anchor" id="api-error-messages" data-panel="api-error-messages">
+    <div class="api-requests">
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong>
+                Erreur 400 
+            </div>
+            <!-- Liste des véhicules disponibles -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">400</th>
+                                <td>
+                                    <pre class="code">
+{
+    "title": "Validation failed !",
+    "violations": {
+        "field": "Error message",
+        "field": "Error message"
+    }
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong>
+                Erreur 401 
+            </div>
+            <!-- Liste des véhicules disponibles -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "code": 401,
+    "message": "Invalid JWT Token"
+    // Token non valide
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "code": 401,
+    "message": "JWT Token not found"
+    // Manque soit le jeton soit l'entête Authorization dans les entêtes HTTP
+}
+                                   </pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">401</th>
+                                <td>
+                                    <pre class="code">
+{
+    "code": 401,
+    "message": "Expired JWT Token"
+    // Token expiré
+}
+                                   </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong>
+                Erreur 403 
+            </div>
+            <!-- Liste des véhicules disponibles -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">403</th>
+                                <td>
+                                    <pre class="code">
+{
+    "statusCode": 403,
+    "message": "Access Denied."
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong>
+                Erreur 404
+            </div>
+            <!-- Liste des smartphones recherchés -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">404</th>
+                                <td>
+                                    <pre class="code">
+{
+    "statusCode": 404,
+    "message": "No route found for \"METHOD /Route\""
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong>
+                Erreur 405
+            </div>
+            <!-- Liste des smartphones paginés -->
+            <div class="request-body hide">
+                <p class="request-title">Responses</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Code</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">405</th>
+                                <td>
+                                    <pre class="code">
+{
+    "statusCode": 405,
+    "message": "No route found for \"METHOD /Route\": Method Not Allowed (Allow: GET, POST, ...)"
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="request delete">
+            <div class="request-header">
+                <span class="type">
+                    METHOD
+                </span>
+                <strong>/Route</strong> 
+                Erreur 500
+            </div>
+            <div class="request-body hide">
+                <p class="request-title">Response</p>
+                <div class="request-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">500</th>
+                                <td>
+                                    <pre class="code">
+{
+    "statusCode": 500,
+    "message": "Control character error, possibly incorrectly encoded"
+    // Ici, le message d'erreur varie selon l'erreur
+}
+                                    </pre>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
