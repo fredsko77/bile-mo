@@ -185,6 +185,8 @@ class ClientUser
 
     public function getLink(): string
     {
-        return self::ROUTE_SELF . '/' . $this->ref;
+        $this->link = self::ROUTE_SELF . '/' . $this->ref;
+
+        return $this->link;
     }
 }
