@@ -55,5 +55,4 @@ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 ```
 chmod -R 775 config/ 
 ```
-Trouvez l'analyse Codacy du projet ici 
-[a link](https://app.codacy.com/gh/fredsko77/bile-mo/dashboard)
+Trouvez l'analyse Codacy du projet [ici](https://app.codacy.com/gh/fredsko77/bile-mo/dashboard)
