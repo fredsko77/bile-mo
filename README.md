@@ -38,7 +38,7 @@ php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
 
-8. Avant de compléter configuration de lexik-jwt, assurez vous que l'extension **openssl** soit bien installé sur votre poste en ouvrant une invite de commande et en tapant **openssl**
+8. Avant de compléter configuration de lexik-jwt, assurez vous que l'extension **openssl** soit bien installé sur votre poste en ouvrant une invite de commande et en tapant **openssl**.
   
 Créer un répertoire jwt dans le dossier config **`mkdir -p cnfig/jwt`**
   
@@ -55,3 +55,5 @@ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 ```
 chmod -R 775 config/ 
 ```
+Trouvez l'analyse Codacy du projet ici 
+[a link](https://app.codacy.com/gh/fredsko77/bile-mo/dashboard)
