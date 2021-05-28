@@ -12,7 +12,7 @@ git clone https://github.com/fredsko77/bile-mo.git <répertoire>
 composer install
 ``` 
 
-3. Configurer votre accès à la base de données en mofiant la ligue ci-dessous dans le fichier .env
+3. Configurer votre accès à la base de données en mofiant la ligne ci-dessous dans le fichier .env
 ```
 DATABASE_URL=
 ```
